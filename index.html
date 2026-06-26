@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KIPM - 知识产权综合管理平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-box">
+            <div class="login-logo">
+                <div class="logo-icon">KIPM</div>
+                <h1>知识产权综合管理平台</h1>
+                <p class="subtitle">北建大-北投医院建设联合研究中心</p>
+            </div>
+            <div class="login-form">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" id="login-username" value="admin" placeholder="请输入用户名">
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" id="login-password" value="******" placeholder="请输入密码">
+                </div>
+                <div class="form-group">
+                    <label>角色</label>
+                    <select id="login-role">
+                        <option value="admin">系统管理员</option>
+                        <option value="ip-director">知产办主任</option>
+                        <option value="patent-engineer">专利工程师</option>
+                        <option value="data-ip">数据IP专员</option>
+                        <option value="legal">法务专员</option>
+                        <option value="liaison">四方联络专员</option>
+                        <option value="researcher">科研人员</option>
+                    </select>
+                </div>
+                <button class="btn-login" onclick="doLogin()">登录</button>
+                <p class="login-hint">Demo模式：直接点击登录即可体验</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-app" class="main-app" style="display:none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">KIPM</div>
+                <div class="logo-text">
+                    <div class="logo-title">KIPM</div>
+                    <div class="logo-sub">知识产权综合管理平台</div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-item active" data-page="dashboard" onclick="navTo('dashboard')">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">仪表板</span>
+                </div>
+                <div class="nav-item" data-page="ip-management" onclick="navTo('ip-management')">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">知识产权管理</span>
+                </div>
+                <div class="nav-item" data-page="contribution" onclick="navTo('contribution')">
+                    <span class="nav-icon">🧮</span>
+                    <span class="nav-text">贡献度计算引擎</span>
+                    <span class="nav-badge">核心</span>
+                </div>
+                <div class="nav-item" data-page="blockchain" onclick="navTo('blockchain')">
+                    <span class="nav-icon">🔗</span>
+                    <span class="nav-text">区块链存证</span>
+                    <span class="nav-badge">权证链</span>
+                </div>
+                <div class="nav-item" data-page="data-ip" onclick="navTo('data-ip')">
+                    <span class="nav-icon">🗄️</span>
+                    <span class="nav-text">数据知识产权</span>
+                </div>
+                <div class="nav-item" data-page="collaboration" onclick="navTo('collaboration')">
+                    <span class="nav-icon">🤝</span>
+                    <span class="nav-text">四方协同</span>
+                </div>
+                <div class="nav-item" data-page="revenue" onclick="navTo('revenue')">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">收益分配</span>
+                </div>
+                <div class="nav-item" data-page="analysis" onclick="navTo('analysis')">
+                    <span class="nav-icon">📈</span>
+                    <span class="nav-text">智能分析</span>
+                </div>
+                <div class="nav-divider"></div>
+                <div class="nav-item" data-page="settings" onclick="navTo('settings')">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">系统管理</span>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-meta">
+                        <div class="user-name" id="current-user-name">管理员</div>
+                        <div class="user-role" id="current-user-role">系统管理员</div>
+                    </div>
+                </div>
+                <button class="btn-logout" onclick="doLogout()">退出</button>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content">
+            <header class="content-header">
+                <div class="breadcrumb" id="breadcrumb">仪表板</div>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="搜索专利、项目、数据...">
+                        <button>🔍</button>
+                    </div>
+                    <div class="notification-bell">
+                        <span>🔔</span>
+                        <span class="notif-badge">3</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="page-container" id="page-container">
+                <!-- Pages will be injected by JS -->
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/mock-data.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
